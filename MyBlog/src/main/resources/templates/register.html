@@ -8,9 +8,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="renderer" content="webkit">
     <meta http-equiv="Cache-Control" content="no-siteapp" />
-    <meta name="keywords" content="博客,个人,学习,IT,生活,张海洋,程序猿,springboot,java,后端，注册">
-    <meta name="description" content="张海洋，正宗97后，爱编程。喜欢旅行、摄影、爱生活。专注于Spring,SpringBoot等后端技术探索，以及MySql,Oracle数据库开发和SSM,SSH等后端流行框架学习。">
-
+  
     <link rel="icon" type="image/x-icon" href="../img/lk_001.jpg">
     <link href="https://lib.baomitu.com/amazeui/2.7.2/css/amazeui.min.css" rel="stylesheet">
     <link href="https://lib.baomitu.com/font-awesome/5.8.0/css/fontawesome.min.css" rel="stylesheet">
@@ -57,8 +55,14 @@
                         <span id="auth_code_null" class="iconsAuthCodeNull icons am-icon-warning"></span>
                         <span id="auth_code_error" class="iconsAuthCodeError icons am-icon-times"></span>
                         <div class="getAuthCodeBtn">
-                            <button type="button" id="msg_btn" class="am-btn am-btn-secondary am-round">获取验证码</button>
+<!--                             <button type="button" id="msg_btn" class="am-btn am-btn-secondary am-round">获取验证码</button>
+ -->                            <img id="imgObj" src="getCode1" alt="图片加载失败" onclick="copyText()" />
                         </div>
+                        <!-- <div id=random> 
+                        <img id="imgObj" alt="验证码"   src="${pageContext.request.contextPath}/getCode1"> </div>
+                     
+                         <img id="imgObj" src="getCode1" alt="图片加载失败" /> </div> -->
+                        
                     </div>
                     <div id="auth_code_warn" class="input_warn">
                         <span>验证码错误！</span>

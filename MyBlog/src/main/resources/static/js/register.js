@@ -20,6 +20,8 @@
 
     registerFormBtn.addClass("no_submit");
     phone.addClass("phone_error");
+    
+    
     //手机号输入框失去焦点
     phone.blur(function () {
         var phone_value = phone.val();
@@ -193,6 +195,10 @@
 
         register_big.append(sec);
 
+    }
+    function copyText(){
+    	//imgObj.src="getCode1";
+    	imgObj.src= "getCode1"+'?'+Math.random();
     }
     //注册提交表单
     // var registerForm = $("#registerForm");
