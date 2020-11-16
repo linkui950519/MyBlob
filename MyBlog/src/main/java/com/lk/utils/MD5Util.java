@@ -37,5 +37,9 @@ public class MD5Util {
         }
         return hexValue.toString();
     }
-
+public static void main(String[] args) {
+	MD5Util aMD5Util = new MD5Util();
+	String encode = aMD5Util.encode("1");
+	System.out.println(encode);
+}
 }
