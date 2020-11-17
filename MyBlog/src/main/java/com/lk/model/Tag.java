@@ -29,4 +29,29 @@ public class Tag {
         this.tagName = tagName;
         this.tagSize = tagSize;
     }
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getTagName() {
+		return tagName;
+	}
+
+	public void setTagName(String tagName) {
+		this.tagName = tagName;
+	}
+
+	public int getTagSize() {
+		return tagSize;
+	}
+
+	public void setTagSize(int tagSize) {
+		this.tagSize = tagSize;
+	}
+    
 }
