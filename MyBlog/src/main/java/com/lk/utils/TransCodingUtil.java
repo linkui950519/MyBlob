@@ -10,7 +10,7 @@ import java.net.URLDecoder;
  */
 public class TransCodingUtil {
 
-    /**
+    /**    
      * 中文转unicode编码
      * @param gbString 汉字
      * @return unicode编码
