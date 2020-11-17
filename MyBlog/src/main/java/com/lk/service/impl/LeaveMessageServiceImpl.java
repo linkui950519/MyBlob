@@ -38,7 +38,8 @@ public class LeaveMessageServiceImpl implements LeaveMessageService {
         TimeUtil timeUtil = new TimeUtil();
         String nowStr = timeUtil.getFormatDateForFive();
         leaveMessageContent = JavaScriptCheck.javaScriptCheck(leaveMessageContent);
-        LeaveMessage leaveMessage = new LeaveMessage(pageName, userService.findIdByUsername(answerer), userService.findIdByUsername(SiteOwner.SITE_OWNER), nowStr, leaveMessageContent);
+        int findIdByUsername = userService.findIdByUsername(answerer);
+        LeaveMessage leaveMessage = new LeaveMessage(pageName, findIdByUsername, userService.findIdByUsername(SiteOwner.SITE_OWNER), nowStr, leaveMessageContent);
 
         leaveMessageMapper.publishLeaveMessage(leaveMessage);
 

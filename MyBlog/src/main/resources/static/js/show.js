@@ -41,9 +41,9 @@
             '<div class="show-weixin">' +
             '<p><i class="weiXinQuoteLeft am-icon-quote-left "></i></p><br>' +
             '<p class="show-weixin-pic">' +
-            '<img src="https://zhy-myblog.oss-cn-shenzhen.aliyuncs.com/static/img/weixin.jpg">' +
+            '<img src="../img/wx.png">' +
             '</p>' +
-            '<p class="show-weixin-pic">欢迎关注我的微信公众号：zhyocean1314</p>' +
+            '<p class="show-weixin-pic"></p>' +
             '<p><i class="weiXinQuoteRight am-icon-quote-right "></i></p>' +
             '</div>' +
             '<div>' +
@@ -105,11 +105,7 @@
             $('.likeHeart').find('i').removeClass("am-icon-heart-o");
             $('.likeHeart').find('i').addClass("am-icon-heart");
         }
-        $('.other').append($('<div class="social-share" data-initialized="true" data-url="https://www.zhyocean.cn/article/' + data.articleId  + '"  data-title="' + data.articleTitle + '">' +
-            '<a href="#" class="social-share-icon icon-qq" data-am-popover="{content: \'分享至QQ好友\', trigger: \'hover focus\'}"></a>' +
-            '<a href="#" class="social-share-icon icon-qzone" data-am-popover="{content: \'分享至QQ空间\', trigger: \'hover focus\'}"></a>' +
-            '<a href="#" class="social-share-icon icon-wechat"></a>' +
-            '<a href="#" class="social-share-icon icon-weibo" data-am-popover="{content: \'分享至微博\', trigger: \'hover focus\'}"></a>' +
+        $('.other').append($('<div class="social-share" data-initialized="true" data-url="http://localhost:8888/article/' + data.articleId  + '"  data-title="' + data.articleTitle + '">' +
             '</div>'))
 
         //选中所有需放大的图片加上data-src属性
