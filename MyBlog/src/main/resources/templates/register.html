@@ -19,7 +19,7 @@
     <script src="https://lib.baomitu.com/underscore.js/1.9.1/underscore-min.js"></script>
     <script src="https://lib.baomitu.com/amazeui/2.7.2/js/amazeui.min.js"></script>
 </head>
-<body>
+<body >
 <div id="app">
     <!--引入共有头部-->
     <div th:replace="header :: header"></div>
@@ -51,17 +51,12 @@
                     </div>
                     <label for="auth_code" style="margin-top: 6px">验证码:</label>
                     <div  class="am-form-group am-form-icon am-form-feedback" style="margin-left: 0;">
-                        <input style="width: 45%" type="text" name="phone" id="auth_code" placeholder="点右边获得短信验证码呦">
+                        <input style="width: 45%" type="text" name="phone" id="auth_code" placeholder="点右边更换验证码呦">
                         <span id="auth_code_null" class="iconsAuthCodeNull icons am-icon-warning"></span>
                         <span id="auth_code_error" class="iconsAuthCodeError icons am-icon-times"></span>
                         <div class="getAuthCodeBtn">
-<!--                             <button type="button" id="msg_btn" class="am-btn am-btn-secondary am-round">获取验证码</button>
- -->                            <img id="imgObj" src="getCode1" alt="图片加载失败" onclick="copyText()" />
+                             <img id="imgObj" src="getCode1" alt="图片加载失败" onclick="copyText()" />
                         </div>
-                        <!-- <div id=random> 
-                        <img id="imgObj" alt="验证码"   src="${pageContext.request.contextPath}/getCode1"> </div>
-                     
-                         <img id="imgObj" src="getCode1" alt="图片加载失败" /> </div> -->
                         
                     </div>
                     <div id="auth_code_warn" class="input_warn">

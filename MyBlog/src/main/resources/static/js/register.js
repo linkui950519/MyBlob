@@ -178,12 +178,12 @@
         register_clear.html('');
         var sec = $('<div class="register_success"></div>');
         var register_success_img = $('<div class="register_success_img">\n' +
-            '            <img src="https://zhy-myblog.oss-cn-shenzhen.aliyuncs.com/static/img/register_success.gif" class="am-img-thumbnail">\n' +
+            '            <img src="../img/register_success.gif" class="am-img-thumbnail">\n' +
             '        </div>');
         sec.append(register_success_img);
 
         var register_success_words = $('<div class="register_success_words">\n' +
-            '            <img src="https://zhy-myblog.oss-cn-shenzhen.aliyuncs.com/static/img/register_icon.png">\n' +
+            '            <img src="../img/register_icon.png">\n' +
             '            <p>恭喜注册成功，快去登录吧</p>\n' +
             '        </div>');
         sec.append(register_success_words);
@@ -198,7 +198,7 @@
     }
     function copyText(){
     	//imgObj.src="getCode1";
-    	imgObj.src= "getCode1"+'?'+Math.random();
+    	imgObj.src= "getCode1"+'?'+Math.random()+"%phone="+$("#phone").val();
     }
     //注册提交表单
     // var registerForm = $("#registerForm");

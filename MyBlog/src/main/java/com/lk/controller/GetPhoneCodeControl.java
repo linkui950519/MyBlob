@@ -74,7 +74,10 @@ public class GetPhoneCodeControl {
     	  // 将四位数字的验证码保存到Session中。
     	  HttpSession session = req.getSession();
     	  session.setAttribute("code", codeMap.get("code").toString());
-    	 
+    	  System.out.println("验证码是："+codeMap.get("code").toString());
+    	  String phone = req.getParameter("phone");
+           req.getSession().setAttribute("trueMsgCode", codeMap.get("code").toString());
+          req.getSession().setAttribute("msgCodePhone", phone);
     	  // 禁止图像缓存。
     	  resp.setHeader("Pragma", "no-cache");
     	  resp.setHeader("Cache-Control", "no-cache");
