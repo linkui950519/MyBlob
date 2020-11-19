@@ -1,5 +1,7 @@
 package com.lk.service;
 
+import com.lk.utils.DataMap;
+
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
@@ -28,5 +30,14 @@ public interface CategoryService {
      */
     int countCategoriesNum();
 
-
+    /**
+     * 获得分类名和对应id
+     */
+    DataMap findAllCategories();
+    /**
+     * 更新分类
+     * @param categoryName 分类名
+     * @param type 1--增加分类   2--删除分类
+     */
+    DataMap updateCategory(String categoryName, int type);
 }

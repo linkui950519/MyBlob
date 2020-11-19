@@ -453,4 +453,40 @@ public class ArticleServiceImpl implements ArticleService {
         return articleJsonArray;
     }
 
+	@Override
+  	public JSONObject getArticleCategories(int rows, int pageNum) {
+		PageHelper.startPage(pageNum, rows);
+        List<Article> articles = articleMapper.getArticleManagement();
+        PageInfo<Article> pageInfo = new PageInfo<>(articles);
+        JSONArray returnJsonArray = new JSONArray();
+        JSONObject returnJson = new JSONObject();
+        JSONObject articleJson;
+        for(Article article : articles){
+            articleJson = new JSONObject();
+            articleJson.put("id",article.getId());
+            articleJson.put("articleId",article.getArticleId());
+            articleJson.put("originalAuthor",article.getOriginalAuthor());
+            articleJson.put("articleTitle",article.getArticleTitle());
+            articleJson.put("articleCategories",article.getArticleCategories());
+            articleJson.put("publishDate",article.getPublishDate());
+            String pageName = "article/" + article.getArticleId();
+            articleJson.put("visitorNum",visitorService.getNumByPageName(pageName));
+
+            returnJsonArray.add(articleJson);
+        }
+        returnJson.put("status",200);
+        returnJson.put("result",returnJsonArray);
+        JSONObject pageJson = new JSONObject();
+        pageJson.put("pageNum",pageInfo.getPageNum());
+        pageJson.put("pageSize",pageInfo.getPageSize());
+        pageJson.put("total",pageInfo.getTotal());
+        pageJson.put("pages",pageInfo.getPages());
+        pageJson.put("isFirstPage",pageInfo.isIsFirstPage());
+        pageJson.put("isLastPage",pageInfo.isIsLastPage());
+
+        returnJson.put("pageInfo",pageJson);
+
+        return returnJson;
+	}
+
 }

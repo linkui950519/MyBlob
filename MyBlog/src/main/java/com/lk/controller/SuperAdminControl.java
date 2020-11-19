@@ -10,11 +10,16 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.lk.constant.CodeType;
+import com.lk.service.ArticleLikesRecordService;
 import com.lk.service.ArticleService;
+import com.lk.service.CategoryService;
 import com.lk.service.FeedBackService;
 import com.lk.service.PrivateWordService;
 import com.lk.service.UserService;
 import com.lk.service.VisitorService;
+import com.lk.utils.DataMap;
+import com.lk.utils.JsonResult;
 
 import net.sf.json.JSONObject;
 
@@ -36,7 +41,10 @@ public class SuperAdminControl {
     UserService userService;
     @Autowired
     ArticleService articleService;
-
+    @Autowired
+    CategoryService categoryService;
+    @Autowired
+    ArticleLikesRecordService articleLikesRecordService;
     /**
      * 获得所有悄悄话
      * @return
@@ -113,6 +121,8 @@ public class SuperAdminControl {
         return articleService.getArticleManagement(Integer.parseInt(rows), Integer.parseInt(pageNum));
     }
 
+    
+    
     /**
      * 删除文章
      * @param id 文章id
@@ -126,4 +136,48 @@ public class SuperAdminControl {
         }
         return articleService.deleteArticle(Long.parseLong(id));
     }
+    /**
+     * 获得所有分类
+     */
+ @GetMapping("/getArticleCategories")
+  public String getArticleCategories( ){
+	  try {
+          DataMap<?> data = categoryService.findAllCategories();
+          return JsonResult.build(data).toJSON();
+      } catch (Exception e){
+         System.out.println("Get article categories exception"+ e);
+      }
+      return JsonResult.fail(CodeType.SERVER_EXCEPTION).toJSON();
+ }
+ 
+ /**
+  * 添加或删除分类
+  */
+ @PostMapping(value = "/updateCategory")
+  public String updateCategory(@RequestParam("categoryName") String  categoryName,
+                           @RequestParam("type") int type){
+     try {
+         DataMap data = categoryService.updateCategory(categoryName, type);
+         return JsonResult.build(data).toJSON();
+     } catch (Exception e){
+         System.out.println ("Update type [{}] article categories [{}] exception"+ type+ categoryName+ e);
+     }
+     return JsonResult.fail(CodeType.SERVER_EXCEPTION).toJSON();
+ }
+ 
+ /**
+  * 获得文章点赞信息
+  */
+ @PostMapping(value = "/getArticleThumbsUp")
+  public String getArticleThumbsUp(@RequestParam("rows") int rows,
+                                      @RequestParam("pageNum") int pageNum){
+     try {
+         DataMap data = articleLikesRecordService.getArticleThumbsUp(rows, pageNum);
+         return JsonResult.build(data).toJSON();
+     } catch (Exception e){
+         System.out.println("Get article thumbsUp exception"+ e);
+     }
+     return JsonResult.fail(CodeType.SERVER_EXCEPTION).toJSON();
+ }
+
 }
