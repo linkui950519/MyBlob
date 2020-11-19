@@ -15,6 +15,7 @@ import com.lk.service.ArticleLikesRecordService;
 import com.lk.service.ArticleService;
 import com.lk.service.UserService;
 import com.lk.utils.DataMap;
+import com.lk.utils.StringUtil;
 
 /**
  * @author: zhangocean
@@ -30,7 +31,7 @@ public class ArticleLikesRecordServiceImpl implements ArticleLikesRecordService 
     UserService userService;
     @Autowired
     ArticleService articleService;
-
+  
     @Override
     public boolean isLiked(long articleId, String username) {
         ArticleLikesRecord articleLikesRecord = articleLikesMapper.isLiked(articleId, userService.findIdByUsername(username));
@@ -79,5 +80,16 @@ public class ArticleLikesRecordServiceImpl implements ArticleLikesRecordService 
         returnJson.put("pageInfo",pageJson);
 
         return DataMap.success().setData(returnJson);
+    }
+    @Override
+    public DataMap readThisThumbsUp(int id) {
+        articleLikesMapper.readThisThumbsUp(id);
+        return DataMap.success();
+    }
+
+    @Override
+    public DataMap readAllThumbsUp() {
+        articleLikesMapper.readAllThumbsUp();
+        return DataMap.success();
     }
 }

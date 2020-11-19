@@ -179,5 +179,31 @@ public class SuperAdminControl {
      }
      return JsonResult.fail(CodeType.SERVER_EXCEPTION).toJSON();
  }
+ /**
+  * 已读所有点赞信息
+  */
+ @GetMapping(value = "/readAllThumbsUp")
+  public String readAllThumbsUp(){
+     try {
+         DataMap data = articleLikesRecordService.readAllThumbsUp();
+         return JsonResult.build(data).toJSON();
+     } catch (Exception e){
+         System.out.println("Read all thumbsUp exception"+ e);
+     }
+     return JsonResult.fail(CodeType.SERVER_EXCEPTION).toJSON();
+ }
+ /**
+  * 已读一条点赞信息
+  */
+ @GetMapping(value = "/readThisThumbsUp")
+  public String readThisThumbsUp(@RequestParam("id") int id){
+     try {
+         DataMap data = articleLikesRecordService.readThisThumbsUp(id);
+         return JsonResult.build(data).toJSON();
+     } catch (Exception e){
+    	 System.out.println(("Read one thumbsUp [{}] exception"+ id+ e));
+     }
+     return JsonResult.fail(CodeType.SERVER_EXCEPTION).toJSON();
+ }
 
 }
