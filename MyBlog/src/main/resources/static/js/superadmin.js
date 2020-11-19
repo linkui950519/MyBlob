@@ -3,7 +3,7 @@ var deleteArticleId="";
 
 $('.superAdminList .superAdminClick').click(function () {
     var flag = $(this).attr('class').substring(16);
-    $('#statistics,#articleManagement,#articleComment,#articleCategories,#friendLink,#userFeedback,#privateWord').css("display","none");
+    $('#statistics,#articleManagement,#articleComment,#articleCategories,#friendLink,#userFeedback,#privateWord,#articleThumbsUp').css("display","none");
     $("#" + flag).css("display","block");
 });
 
@@ -481,7 +481,6 @@ $('.superAdminList .articleManagement').click(function () {
 $('.superAdminList .articleThumbsUp').click(function () {
     getArticleThumbsUp(1);
 });
-//点击点赞管理
 //点击分类管理
 $('.superAdminList .articleCategories').click(function () {
     getArticleCategories(1);
