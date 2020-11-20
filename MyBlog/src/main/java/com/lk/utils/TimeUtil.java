@@ -49,7 +49,7 @@ public class TimeUtil {
 
     /**
      * 解析日期
-     * @param date 日期 2018-06-21
+     * @param date 日期 2020-11-21
      * @return
      */
     public LocalDate getParseDateForThree(String date){
@@ -59,7 +59,7 @@ public class TimeUtil {
 
     /**
      * 解析日期
-     * @param date 日期 2018-06-21 12:01:25
+     * @param date 日期 2020-11-21 12:01:25
      * @return
      */
     public LocalDate getParseDateForSix(String date){
