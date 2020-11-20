@@ -54,7 +54,13 @@ public class BackControl {
     public String myLove(){
         return "mylove";
     }
-
+    /**
+     * 跳转我的女孩页
+     */
+    @GetMapping("/405")
+    public String get405(){
+        return "405";
+    }
     /**
      * 跳转我的藏心阁页
      */
@@ -103,7 +109,7 @@ public class BackControl {
     @GetMapping("/aboutme")
     public String aboutme(HttpServletRequest request){
         request.getSession().removeAttribute("lastUrl");
-        return "aboutme";
+        return "aboutme2";
     }
 
     /**

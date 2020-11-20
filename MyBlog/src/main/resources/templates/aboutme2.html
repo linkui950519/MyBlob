@@ -1,0 +1,184 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"><html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:http="http://www.w3.org/1999/xhtml">
+<head>
+      <meta charset="UTF-8">
+    <title>关于我</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+     
+    <link rel="icon" type="image/x-icon" href="../img/lk_001.jpg">
+    <link rel="stylesheet" type="text/css" href="css/aboutmetimeline.css">
+    <link href="https://lib.baomitu.com/lightgallery/1.6.12/css/lightgallery.min.css" rel="stylesheet">
+    <link href="https://lib.baomitu.com/amazeui/2.7.2/css/amazeui.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/all.css">
+    <link rel="stylesheet" href="css/comment.css">
+    <link rel="stylesheet" href="css/aboutme.css">
+    <link href="https://lib.baomitu.com/font-awesome/5.8.0/css/fontawesome.min.css" rel="stylesheet">
+
+    <script src="https://lib.baomitu.com/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://lib.baomitu.com/underscore.js/1.9.1/underscore-min.js"></script>
+    <script src="https://lib.baomitu.com/amazeui/2.7.2/js/amazeui.min.js"></script>
+</head>
+<body >
+
+<div id="app">
+    <!--引入共有头部-->
+    <div th:replace="header :: header"></div>
+    <!--页面主体-->
+    <div id="main">
+        <div class="am-container">
+            <div class="am-g">
+                <div class="am-u-sm-12 am-u-lg-12">
+                    <div id="wordsView">
+<table border=5 bordercolor=black align=center>
+<tr height=70 bgcolor=white align=center>
+<td width=720 colspan=6 align=center
+><font size=5 ><b><a href="http://www.cnblogs.com/shimeng-waim/p/7535072.html">个人详情</a>
+</b></font></td>
+</tr>
+
+<tr height=50 >
+<td width=130 align=center  
+><font size=5><b>姓名：</b></td>
+<td width=130 align=center
+><font size=4>林奎</td>
+<td width=130 align=center
+><font size=5>性别：</td>
+<td width=130 align=center
+><font size=4>男</td>
+<td width=200 colspan=2 rowspan=4></td>
+</tr>
+
+<tr height=50 >
+<td width=130 align=center
+><font size=5 align=center
+>出生年月：</td>
+<td width=130 align=center
+><font size=4>1995.5.19</td>
+<td width=130 align=center
+><font size=5>民族：</td>
+<td width=130 align=center 
+><font size=4>汉</td>
+</tr>
+
+<tr height=50 >
+<td width=130 align=center
+><font size=5>学历：</td>
+<td width=130 align=center
+><font size=4 align=center
+>本科</td>
+<td width=130 align=center
+><font size=5>专业：</td>
+<td width=130 align=center
+><font size=4>计算机科学与技术</td>
+</tr>
+
+<tr height=50 >
+<td width=130 align=center
+><font size=5>籍贯：</td>
+<td width=130 align=center
+><font size=4>河南许昌</td>
+<td width=130 align=center
+><font size=5>联系电话：</td>
+<td width=130 align=center
+><font size=4>15801031370</td>
+</tr>
+
+<tr height=50 >
+<td width=100 align=center
+><font size=5>毕业学校：</td>
+<td width=620 colspan=5 align=center
+><font size=4>中国石油大学</td>
+</tr>
+
+<tr height=50 >
+<td width=110 align=center
+><font size=5>住址：</td>
+<td width=610 colspan=5 align=center
+><font size=4>北京</td>
+</tr>
+
+<tr height=50 >
+<td width=110 align=center
+><font size=5>电子邮箱：</td>
+<td width=610 colspan=5 align=center
+><font size=4><u>275222070@qq.com</u></td>
+</tr>
+
+<tr height=50 >
+<td width=720 colspan=6 align=center
+><font size=5>教育历程</td>
+</tr>
+
+<tr height=50 >
+<td width=720 colspan=6 align=center>2019.3.1-至今 中国石油大学</td>
+</tr>
+
+<tr height=50 >
+<td width=720 colspan=6 align=center
+><font size=5>工作经历</td>
+</tr>
+
+<tr height=50 >
+<td width=720 colspan=6 align=center>2016.2-至今 中科软科技股份有限公司
+</td>
+</tr>
+
+<tr height=50 >
+<td width=720 colspan=6 align=center
+><font size=5>自我评价</td>
+</tr>
+
+<tr height=50 >
+<td width=720 colspan=6 align=center>个人工作勤奋，认真负责，吃苦耐劳，尽职尽责
+</td>
+</tr>
+
+</table>
+<br>
+          </div>
+   <div class="comment">
+                        <div class="comment-top">
+                            <div class="comment-top-input" th:if="${#httpServletRequest.remoteUser}">
+                                <textarea id="comment" placeholder="客官，来说两句吧..."></textarea>
+                            </div>
+                            <div class="comment-top-input" th:unless="${#httpServletRequest.remoteUser}">
+                                <div class="goToLogin">
+                                    &nbsp;&nbsp;&nbsp;<a id="toLogin">登录</a>后才可以发表留言呦...
+                                </div>
+                            </div>
+                            <div class="commentBtn">
+                                <button id="commentBtn" type="button" class="am-btn am-btn-secondary">发表留言</button>
+                            </div>
+                        </div>
+                        <!--页面留言-->
+                        <div class="comment-bottom">
+                        </div>
+                    </div>
+         </div>
+            </div>
+        </div>
+    </div>
+     <!--消息盒子+反馈-->
+    <div th:replace="other :: other"></div>
+    <!--引入共有底部-->
+    <div th:replace="footer :: footer"></div>
+
+      </div>
+<script src="js/all.js"></script>
+<script src="js/leaveMessage.js"></script>
+<!--放大图片插件-->
+<script src="js/lightgallery/lightgallery.js"></script>
+<script src="js/lightgallery/picturefill.min.js"></script>
+<script src="js/lightgallery/lg-pager.js"></script>
+<script src="js/lightgallery/lg-autoplay.js"></script>
+<script src="js/lightgallery/lg-fullscreen.js"></script>
+<script src="js/lightgallery/lg-zoom.js"></script>
+<script>
+    lightGallery(document.getElementById('wordsView'));
+</script>
+
+ 
+  
+</body>
+</html>
