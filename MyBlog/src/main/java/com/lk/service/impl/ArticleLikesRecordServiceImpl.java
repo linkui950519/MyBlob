@@ -15,7 +15,6 @@ import com.lk.service.ArticleLikesRecordService;
 import com.lk.service.ArticleService;
 import com.lk.service.UserService;
 import com.lk.utils.DataMap;
-import com.lk.utils.StringUtil;
 
 /**
  * @author: linkui

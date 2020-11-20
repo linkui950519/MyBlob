@@ -11,10 +11,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.lk.constant.CodeType;
+import com.lk.model.FriendLink;
 import com.lk.service.ArticleLikesRecordService;
 import com.lk.service.ArticleService;
 import com.lk.service.CategoryService;
 import com.lk.service.FeedBackService;
+import com.lk.service.FriendLinkService;
 import com.lk.service.PrivateWordService;
 import com.lk.service.UserService;
 import com.lk.service.VisitorService;
@@ -45,6 +47,9 @@ public class SuperAdminControl {
     CategoryService categoryService;
     @Autowired
     ArticleLikesRecordService articleLikesRecordService;
+    
+    @Autowired
+    FriendLinkService friendLinkService;
     /**
      * 获得所有悄悄话
      * @return
@@ -202,6 +207,57 @@ public class SuperAdminControl {
          return JsonResult.build(data).toJSON();
      } catch (Exception e){
     	 System.out.println(("Read one thumbsUp [{}] exception"+ id+ e));
+     }
+     return JsonResult.fail(CodeType.SERVER_EXCEPTION).toJSON();
+ }
+
+ /**
+  * 获得友链
+  */
+ @GetMapping(value = "/getFriendLink")
+  public String getFriendLink(){
+     try {
+         DataMap data = friendLinkService.getAllFriendLink();
+         return JsonResult.build(data).toJSON();
+     } catch (Exception e){
+    	 System.out.println("Get friendLink exception"+ e);
+     }
+     return JsonResult.fail(CodeType.SERVER_EXCEPTION).toJSON();
+ }
+ 
+ /**
+  * 添加或编辑友链
+  */
+ @PostMapping(value = "/updateFriendLink")
+ 
+ public String addFriendLink(@RequestParam("id") String id,
+                             @RequestParam("blogger") String blogger,
+                             @RequestParam("url") String url){
+     try {
+         FriendLink friendLink = new FriendLink(blogger, url);
+         DataMap data;
+         if("".equals(id)||id==null){
+             data = friendLinkService.addFriendLink(friendLink);
+         } else {
+             data = friendLinkService.updateFriendLink(friendLink, Integer.parseInt(id));
+         }
+         return JsonResult.build(data).toJSON();
+     } catch (Exception e){
+    	 System.out.println("Update friendLink [{}] exception"+ blogger+ e);
+     }
+     return JsonResult.fail(CodeType.SERVER_EXCEPTION).toJSON();
+ }
+
+ /**
+  * 删除友链
+  */
+ @PostMapping(value = "/deleteFriendLink")
+  public String deleteFriendLink(@RequestParam("id") int id){
+     try {
+         DataMap data = friendLinkService.deleteFriendLink(id);
+         return JsonResult.build(data).toJSON();
+     } catch (Exception e){
+    	 System.out.println("Delete friendLink [{}] exception"+ id+ e);
      }
      return JsonResult.fail(CodeType.SERVER_EXCEPTION).toJSON();
  }
