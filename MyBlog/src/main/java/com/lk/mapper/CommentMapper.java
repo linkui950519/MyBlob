@@ -15,8 +15,8 @@ import java.util.List;
 @Mapper
 public interface CommentMapper {
 
-    @Insert("insert into comment_record(articleId,pId,answererId,respondentId,commentDate,likes,commentContent)" +
-            " values(#{articleId},#{pId},#{answererId},#{respondentId},#{commentDate},#{likes},#{commentContent})")
+    @Insert("insert into comment_record(articleId,pId,answererId,respondentId,commentDate,likes,commentContent,isRead)" +
+            " values(#{articleId},#{pId},#{answererId},#{respondentId},#{commentDate},#{likes},#{commentContent},#{isRead})")
     void insertComment(Comment comment);
 
     @Select("select * from comment_record where articleId=#{articleId} and pId=#{pId} order by id desc")

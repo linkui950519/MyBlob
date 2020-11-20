@@ -1,6 +1,7 @@
 package com.lk.service;
 
 import com.lk.model.ArticleLikesRecord;
+import com.lk.utils.DataMap;
 
 /**
  * @author: linkui
@@ -28,4 +29,20 @@ public interface ArticleLikesRecordService {
      * @param articleId 文章id
      */
     void deleteArticleLikesRecordByArticleId(long articleId);
+    /**
+     * 获得文章点赞信息
+     */
+    DataMap getArticleThumbsUp(int rows, int pageNum);
+    /**
+     * 已读一条点赞记录
+     */
+    DataMap readThisThumbsUp(int id);
+
+    /**
+     * 已读所有点赞记录
+     */
+    DataMap readAllThumbsUp();
+    
+
+ 
 }

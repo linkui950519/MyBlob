@@ -47,7 +47,12 @@ public class Comment {
      */
     private String commentContent;
 
-	public long getId() {
+    /**
+     * 该条评论是否已读  1--未读   0--已读
+     */
+    private int isRead = 1;
+    
+    public long getId() {
 		return id;
 	}
 
@@ -109,6 +114,14 @@ public class Comment {
 
 	public void setCommentContent(String commentContent) {
 		this.commentContent = commentContent;
+	}
+
+	public int getIsRead() {
+		return isRead;
+	}
+
+	public void setIsRead(int isRead) {
+		this.isRead = isRead;
 	}
 
 }

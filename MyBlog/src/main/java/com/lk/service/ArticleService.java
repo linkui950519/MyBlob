@@ -138,4 +138,7 @@ public interface ArticleService {
     @Transactional
     int deleteArticle(long id);
 
+    
+	JSONObject getArticleCategories(int rows, int pageNum);
+
 }
