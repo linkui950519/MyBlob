@@ -1,309 +1,361 @@
 /*
-Navicat MySQL Data Transfer
+ Navicat Premium Data Transfer
 
-Source Server         : lcoalhost
-Source Server Version : 50719
-Source Host           : localhost:3306
-Source Database       : myblog
+ Source Server         : 10.7.131.84
+ Source Server Type    : MySQL
+ Source Server Version : 50722
+ Source Host           : 10.7.131.84:3306
+ Source Schema         : imagedata4_uat
 
-Target Server Type    : MYSQL
-Target Server Version : 50719
-File Encoding         : 65001
+ Target Server Type    : MySQL
+ Target Server Version : 50722
+ File Encoding         : 65001
 
-Date: 2019-04-07 21:39:32
+ Date: 22/11/2020 16:59:57
 */
 
-SET FOREIGN_KEY_CHECKS=0;
+SET NAMES utf8mb4;
+SET FOREIGN_KEY_CHECKS = 0;
 
 -- ----------------------------
 -- Table structure for archives
 -- ----------------------------
 DROP TABLE IF EXISTS `archives`;
-CREATE TABLE `archives` (
+CREATE TABLE `archives`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `archiveName` varchar(255) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+  `archiveName` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of archives
 -- ----------------------------
-INSERT INTO `archives` VALUES ('1', '2018年07月');
-INSERT INTO `archives` VALUES ('2', '2018年08月');
+INSERT INTO `archives` VALUES (1, '2020年10月');
+INSERT INTO `archives` VALUES (2, '2020年11月');
+INSERT INTO `archives` VALUES (4, '2020年11月');
 
 -- ----------------------------
 -- Table structure for article
 -- ----------------------------
 DROP TABLE IF EXISTS `article`;
-CREATE TABLE `article` (
+CREATE TABLE `article`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `articleId` bigint(20) NOT NULL,
-  `author` varchar(255) NOT NULL,
-  `originalAuthor` varchar(255) NOT NULL,
-  `articleTitle` varchar(255) NOT NULL,
-  `articleContent` longtext NOT NULL,
-  `articleTags` varchar(255) NOT NULL,
-  `articleType` varchar(255) NOT NULL,
-  `articleCategories` varchar(255) NOT NULL,
-  `publishDate` varchar(255) NOT NULL,
-  `updateDate` varchar(255) NOT NULL,
-  `articleUrl` varchar(255) NOT NULL,
-  `articleTabloid` text NOT NULL,
+  `author` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `originalAuthor` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `articleTitle` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `articleContent` longtext CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `articleTags` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `articleType` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `articleCategories` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `publishDate` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `updateDate` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `articleUrl` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `articleTabloid` text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `likes` int(11) NOT NULL,
-  `lastArticleId` bigint(20) DEFAULT NULL,
-  `nextArticleId` bigint(20) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
+  `lastArticleId` bigint(20) NULL DEFAULT NULL,
+  `nextArticleId` bigint(20) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 23 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of article
 -- ----------------------------
-INSERT INTO `article` VALUES ('1', '1532884460', '张海洋', '张海洋', '关于此博客，我有话哔哔', '##自我介绍\n我叫张海洋，紧张的张，目前是一名在校大学生，该博客的维护人，技术方向是Web后端开发，由于我大学专业是物联网工程专业，偏软硬件结合，但是众所周知，大学所培养的人才专业学习一般都得等到大二下学期乃至大三，这对于许多人来说也是个魔咒吧，好不容易经历了xx年义务教育，又历经了高考的洗礼，到了大学发现生活是如此的悠哉，没有专业课的紧张学习，难免都会如温水煮青蛙一般，陷入“舒适”的生活无法自拔。\n\n我很幸运，在大学刚开始加入了计科院翼灵物联工作室，也很荣幸成为这个大家庭中的一员。大一下学期结束的那个暑假，自己在家花了20天的时间自学了Java，从此以后，陷入后端无法自拔。\n\n##关于这个博客网站吖\n在高中三年里，我养成了每天写日记的习惯，现在我的家里还有一本记载着我高中记忆的本本，这个习惯陪伴了我高中，然后毕业之后也“成功”的戒掉了这个习惯。若非入了程序猿这行，我想恐怕这辈子也没机会拾起自己的破烂笔杆子吧...\n\n我也没想到自己会花费两个月时间去建一个自己的博客，毕竟对于自己来说，两个月前的我也还算的上是一名前端小白吧，但随着自己一步一步去设计页面的每一个元素，到最后的完成前后端交互，真的理解了许多前端知识。\n\n原本是定于7月5号发布博客的第一版本，但由于本学期欠的一些账弄得期末考试复习花费了大量时间（没错，这应该就是我拖延上线时间的借口吧~~），博客也一直放下，没有太多时间去搭建。放假回家也是完全被假期的愉快感消磨掉了激情，所幸的是，我还并没有放弃，总算是完成了当初给自己定下的目标。\n\n> 有些事情不是看到希望才去坚持，而是坚持了才会看到希望\n\n对于这个网站的搭建自己付出了太多时间了，虽然这也并不是我认为的最好版本，等自己能力以及水平进一步提升之后，我想我应该还会为此折腾吧。\n\n##想想再说点啥吧\n对于这个博客，我也准备借此记录下我的一些学习日志、生活日常、旅行风景等等。大学生活真的是还没怎么享受就快要结束了，没办法，自己选的路，再怎么也得往下走。记录记录人生，去看看世界，给未来的自己留下点青春的影子\n\n当然最重要的还是要借此多总结学习中的一些问题以及学习中踩得一些坑来提升自己的能力吧，在此我也不给自己立啥flag了，反正那些总会倒的，不如看自己的心情了，哪天心情好了，上来写点学习心得呀或是吐槽吐槽今天又在学校食堂里吃出哪样“高蛋白”吖。本人文采一般，向来也不是能一个人哔哔很多话的，万事都有开头，坚持下去，一切都会好起来的。\n\n总之，这个博客也将是我程序猿生涯的一个新的开始吧，保持生活的激情，坚持走下去，程序猿这条路很枯燥、很漫长，只要坚守本心，一切困难与寂寞都将如同泡沫。加油，向着梦想中的bat前进吧。', '随笔感悟,原创', '原创', '我的故事', '2018-07-30', '2018-07-30', 'http://localhost:8888//article/1532884460', '自我介绍我叫张海洋，紧张的张，目前是一名在校大学生，该博客的维护人，技术方向是Web后端开发，由于我大学专业是物联网工程专业，偏软硬件结合，但是众所周知，大学所培养的人才专业学习一般都得等到大二下学期乃至大三，这对于许多人来说也是个魔咒吧，好不容易经历了xx年义务教育，又历经了高考的洗礼，到了大学发现生活是如此的悠哉，没有专业课的紧张学习，难免都会如温水煮青蛙一般，陷入“舒适”的生活无法自拔。...', '3', '0', '1533196734');
-INSERT INTO `article` VALUES ('2', '1533196734', '张海洋', '张海洋', 'SpringBoot之从零搭建博客网站', '![](https://zhy-myblog.oss-cn-shenzhen.aliyuncs.com/public/%E5%8D%9A%E5%AE%A2%E6%97%A5%E5%BF%97/SpringBoot%E4%B9%8B%E4%BB%8E%E9%9B%B6%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/IMG_5015.JPG)\n> 文字不够，图片来凑。\n\n## 前言\n#### 为什么想要搭建这个博客？\n我还记得，在大二寒假的某天，同往常一样的在家解决这某个bug，不停地问度娘，很巧的碰到了一个同行在他的博客中完美的记录了我的bug的解决方案，随后我又看了看他写的其他博客文章，觉得都非常的不错，并且同时也被他博客网站的简约清新吸引，也就在那刻，心中埋下了准备自己搭建myblog的种子...\n\n于是在寒假的时候我就开始了Bootstrap了的学习，然后好像也并没有什么卵用，因为还是不会用~~~\n\n就这样一直拖了大概有3个月，某天我才意识到我好像有件很重要的事没完成，就是这么的突然，毫无准备的就开始了博客的搭建。\n\n自己在本子上设计了网站的所有页面的大致样式(也借鉴了许多大佬的博客样式，哈哈，我承认我审美不是很好)，列出了应该有的功能，当时看来并不算多，也给自己定了一个目标期限，在7月5日之前上线，不错有了目标也就有了动力，就这么开始干了。\n\n一件事情在开头总是想的很美好，然而事实总会跟你对着干。在博客搭建的过程中遇到了无数多的前端页面设计bug，我在此之前也可以算的上是个前端小小白，很是无奈，不过还是要在这里感谢翼灵工作室里帮我解决了许多bug的波波、田小宇和杨小卿，没有你们估计我的博客还得推迟半年才能上线吧，O(∩_∩)O哈哈~\n\n6、7月也恰好是考试月，堆积在一起的无数们考试如暴风雨一样一夜袭来，一学期欠的帐总该还了，不得不放下手中的网站专心去备考，于是乎，完美的错过了本该上线的时间。\n\n> 编程是个脑力活，如果把它做成了体力活，这就代表是时候改变一下了\n\n#### 文章概述\n- 关于项目，对于学习Springboot是个挺不错的练手项目，可以让你在烦恼的业务逻辑中保持一颗纯洁的心\n- 如何从零开始，使用Springboot开发项目\n- 开发前的一些准备工作，以及思考项目整体结构与思路\n- 记录开发过程中遇到的一些难题以及bug\n- 总结目前博客网站的一些优缺点\n- 思考整个项目有哪些可以优化的地方，以及有哪些可增加的功能\n\n## 页面展示\n\n##### 首页展示\n![](https://zhy-myblog.oss-cn-shenzhen.aliyuncs.com/public/%E5%8D%9A%E5%AE%A2%E6%97%A5%E5%BF%97/SpringBoot%E4%B9%8B%E4%BB%8E%E9%9B%B6%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/20180802120610.png)\n<br>\n##### 文章编辑\n![](https://zhy-myblog.oss-cn-shenzhen.aliyuncs.com/public/%E5%8D%9A%E5%AE%A2%E6%97%A5%E5%BF%97/SpringBoot%E4%B9%8B%E4%BB%8E%E9%9B%B6%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/20180802120611.png)\n<br>\n##### 后台管理\n![](https://zhy-myblog.oss-cn-shenzhen.aliyuncs.com/public/%E5%8D%9A%E5%AE%A2%E6%97%A5%E5%BF%97/SpringBoot%E4%B9%8B%E4%BB%8E%E9%9B%B6%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/20180802121241.png)\n<br>\n##### 用户个人中心\n![](https://zhy-myblog.oss-cn-shenzhen.aliyuncs.com/public/%E5%8D%9A%E5%AE%A2%E6%97%A5%E5%BF%97/SpringBoot%E4%B9%8B%E4%BB%8E%E9%9B%B6%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/20180802121749.png)\n\n## 项目需求\n#### 项目背景\n对于初学Springboot的朋友来说，最好的一个学习方式就是那一个功能俱全的项目来练练手，通过自己重构项目来发现其中的潜在难题，并且也能很好的在编码过程中总结和发现问题、解决问题。使用Springboot开发的博客系统，简单并且实用，适合做练手项目。\n\n#### 功能需求\n###### 主页\n- 博客汇总，以列表形式展示文章，并附上文章作者、发布日期、分类情况以及文章简要\n\n- 能够以分类形式查看文章\n\n- 能够以时间列表方式归档文章\n\n- 可实现通过标签查找所有相关文章\n\n- 个人介绍、联系方式\n\n- 博客网站更新记录\n\n- 友链链接\n\n###### 后台管理\n- 网站仪表盘，记录网站访客量情况\n\n- 文章管理\n1.分页展示文章信息\n2.可对文章进行再编辑以及删除文章\n\n- 发布文章\n1.使用markdown编辑器，支持插入代码，插入图片等功能\n2.文章可选择分类和标签，以及转载文章支持链接原作者文章\n\n- 分类管理，支持增加、删除、修改分类\n\n- 友情链接\n1.支持增加友情链接\n2.支持删除友情链接\n\n- 反馈信息管理，可查看用户反馈信息\n\n#### 安装部署需求\n- 可以使用docker方式部署，也可支持-jar方式\n- 使用springboot自带方式打包\n\n#### 非功能需求\n##### 性能需求\n- 首页响应时间不超过2秒钟\n- 文章页响应时间不超过3秒钟\n\n## 项目设计\n\n#### 总体设计\n- **本项目用到的技术和框架**\n1.项目构建：Maven\n2.web框架：Springboot\n3.数据库ORM：Mybatis\n4.数据库连接池： HikariCP \n5.分页插件：PageHelper\n6.数据库：MySql\n7.缓存：Redis\n8.前端模板：Thymeleaf\n9.文章展示：Editor.md\n\n- **本项目中的关键点**\n1.采用Springboot开发，数据库使用连接池加orm框架的模式，对于系统的关键业务使用Redis缓存，加快相应速度。\n2.整体系统采用门户网站+后台管理+用户个人中心的方式搭建，门户网站展示博客内容以及博主介绍，后台管理用于编辑文章，查看反馈，管理评论留言。\n3.使用阿里云OSS进行静态资源存储，以及CDN全站加速。\n\n- **环境**\n\n|  工具 | 名称  |\n| ------------ | ------------ |\n| 开发工具  | IDEA  |\n|  语言 | JDK1.8、HTML、css、js  |\n| 数据库  | Mysql5.6  |\n| 项目框架  | SSM  |\n| ORM  | Mybatis  |\n| 安全框架  | SpringSecurity  |\n| 缓存  | Redis  |\n| 项目构建  | Maven  |\n| 运行环境  | 阿里云Centos7  |\n\n#### 结构设计\n\n![](https://zhy-myblog.oss-cn-shenzhen.aliyuncs.com/public/%E5%8D%9A%E5%AE%A2%E6%97%A5%E5%BF%97/SpringBoot%E4%B9%8B%E4%BB%8E%E9%9B%B6%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/20180802140136.png)\n对于熟悉Spring开发的朋友来说，相信对此结构也不会陌生。平时的开发过程中，结构设计是重要的环节，特别是协作开发的时候，明细的分包，模块化，可减少代码提交时的冲突。并且明确的结构有助于我们快速的寻找所对应的类。\n\n## 业务设计\n#### 发布文章流程\n\n![](https://zhy-myblog.oss-cn-shenzhen.aliyuncs.com/public/%E5%8D%9A%E5%AE%A2%E6%97%A5%E5%BF%97/SpringBoot%E4%B9%8B%E4%BB%8E%E9%9B%B6%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/20180802141221.png)\n\n#### 登录流程\n\n![](https://zhy-myblog.oss-cn-shenzhen.aliyuncs.com/public/%E5%8D%9A%E5%AE%A2%E6%97%A5%E5%BF%97/SpringBoot%E4%B9%8B%E4%BB%8E%E9%9B%B6%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/201808021412271.png)\n\n#### 用户个人资料修改流程\n\n![](https://zhy-myblog.oss-cn-shenzhen.aliyuncs.com/public/%E5%8D%9A%E5%AE%A2%E6%97%A5%E5%BF%97/SpringBoot%E4%B9%8B%E4%BB%8E%E9%9B%B6%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/20180802143230.png)\n\n## 打包、部署和运行\n- 本项目采用Springboot的maven插件进行打包，打包结果：****.jar\n- 部署方式：使用 nohup java -jar ******.jar >******.log 2>&1 &的方式，后台启动项目，并在该路径下生成运行日志\n\n## 数据设计\n\n###### 用户表：user\n| 名称  | 类型  |  长度 |  主键 | 非空  | 描述  |\n| ------------ | ------------ | ------------ | ------------ | ------------ | ------------ |\n| id  | int  |  11 |  true |  true | 主键，自增  |\n| phone  | varchar  | 255  | false  | true  | 手机号  |\n| username  | varchar  | 255  |  false | true  |  用户名 |\n| password  |  varchar |  255 |  false | true  | 密码  |\n| gender  | char  | 50  | false  |  true | 性别  |\n| trueName  | varchar  | 255  |  false | false  | 姓名  |\n| birthday  |  char | 100  |  false | false  | 生日  |\n| email  | varchar  | 255  | false  | false  | 邮箱  |\n| personalBrief  |  varchar | 255  | false  | false  |  个人简介 |\n| avatarImgUrl  |  varchar |  255 | false  |  true | 头像url |\n| recentlyLanded  | varchar  |  255 |  false | false  |  最近登录时间 |\n\n###### 文章表：article\n| 名称  | 类型  |  长度 |  主键 | 非空  | 描述  |\n| ------------ | ------------ | ------------ | ------------ | ------------ | ------------ |\n| id  | int  |  11 |  true |  true | 主键，自增  |\n| articleId  | bigint  | 20  | false  | true  | 文章id  |\n| author  | varchar  | 255  |  false | true  |  作者 |\n| originalAuthor  |  varchar |  255 |  false | true  | 文章原作者  |\n| articleTitle  | varchar  | 255  | false  |  true | 文章标题  |\n| articleContent  | longtext  | 0  |  false | true  | 文章内容  |\n| articleTags  |  varchar | 255  |  false | true  | 文章标签  |\n| articleType  | varchar  | 255  | false  | true  | 文章类型  |\n| articleCategories  |  varchar | 255  | false  | true  |  文章分类 |\n| publishDate  |  varchar |  255 | false  |  true | 发布文章日期 |\n| updateDate  | varchar  |  255 |  false | true  |  更新文章日期 |\n| articleUrl  | varchar  |  255 |  false | true  |  文章url |\n| articleTabloid  | 0  |  255 |  false | true  |  文章摘要 |\n| likes  | int  |  11 |  false | true  |  文章喜欢数 |\n| lastArticleId  | bigint  |  20 |  false | false  |  上一篇文章id |\n| nextArticleId  | bigint  |  20 |  false | false  |  下一篇文章id |\n\n###### 评论记录表：comment_record\n| 名称  | 类型  |  长度 |  主键 | 非空  | 描述  |\n| ------------ | ------------ | ------------ | ------------ | ------------ | ------------ |\n| id  | bigint  |  20 |  true |  true | 主键，自增  |\n| pId  | bigint  | 20  | false  | true  | 父id  |\n| articleId  | bigint  | 20  |  false | true  |  文章id |\n| originalAuthor  |  varchar |  255 |  false | true  | 文章原作者  |\n| answererId  | int  | 11  | false  |  true | 评论者id  |\n| respondentId  | int  | 11  |  false | true  | 被评论者id  |\n| commentDate  |  varchar | 100  |  false | true  | 评论日期  |\n| likes  | int  | 11  | false  | true  | 评论点赞数  |\n| commentContent  |  text | 0  | false  | true  |  评论内容 |\n\n## 开发流程\n###### 数据库CRUD\n- controller层中编写前端接口，接收前端参数\n- service层中编写所需业务接口，供controller层调用\n- 实现service层中的接口，并注入mapper层中的sql接口\n- 采用Mybatis的JavaConfig方式编写Sql语句。由于并没有使用Mybatis的逆向功能，需要自己手写所有sql语句\n- 关于事务的实现，在启动类中开启事务，并在service层需要实现事务的业务接口上使用`@Transactional`注解，还是十分方便的\n- 本项目开发并不是很难，只是在业务的实现上比较复杂\n\n###### 页面与展示\n- 作为一名后端开发，对于css的功力有所欠缺，这里我使用了[妹子UI主题](http://amazeui.org/ \"妹子UI主题\")，极大的减少了页面的开发难度，特此感谢\n- 前端页面与后端的交互主要是在controller包中，并使用Thymeleaf渲染页面。\n- 自定义异常处理页面，通过重写`WebMvcConfigurerAdapter`实现自动跳转到404、403页面\n\n###### 其他功能\n- 使用lazyload插件实现页面图片懒加载\n- 后台实时记录当天访客量，便于了解博客日常访问量\n- 分析访问量最多的数据，主要在于文章访问部分，将文章放入redis缓存。每次编辑完文章后，更新缓存\n- 使用阿里云互联网中间件的业务实时监控服务，对于网站性能的了解以及优化有很大的帮助\n\n###### 网站建设\n- 服务器选用的是阿里云centos7\n- 域名是阿里云上购买的.cn的域名\n- 网站备案以及公安机关备案，后者备案时间较短但是那个备案网站经常挂掉，所以公安机关备案还得看运气。而网站备案时间就比较长了，按照阿里云的流程走大概1个月左右时间，需要上传个人身份信息以及邮寄个人资料过去。\n- 网站配置了安全证书，可实现https访问以及自动从http跳转到https\n\n## 总结\n#### 开发中遇到的难点\n- 要实现在一个页面进行权限验证，如果验证不成功会跳转到登录界面，并且登录成功后还要返回到之前界面，这里由于对SpringSecurity内部原理的不了解，所以我这里采用的方法是利用请求头和响应头存储url，并在登录成功后的页面出跳转到响应头中存储的url处\n- 上传头像处使用上传头像至阿里云的OSS对象存储中，由于上传问题并没有返回上传成功后的图片url地址，于是只好设置OSS的Bucket为公共读权限，然后当上传成功后手动拼接图片url并存入数据库\n- 项目中最大的难点还是莫过于页面css的设计，但是使用了[妹子UI](http://amazeui.org/ \"妹子UI\")后极大的解决了这个问题，只需修改少量css就能实现自己所需要的样式\n\n#### 博客网站优缺点\n- 首先最大的一个缺点就是在前端页面设计过程中混用了一些Bootstrap，导致依赖过于复杂，不便于后期修改，已经网站上有一些隐藏的bug\n- 对于页面用户体验以及反馈功能的设计便于用户对于浏览过程中出现的问题进行反馈\n- 后端部分明确的分工有利于项目的理解与维护\n\n#### 项目整体优化\n- 目前项目首页以及文章页响应时间过长，后期最好优化到1s响应时间\n- 定时定期进行数据库的备份，防止出现网站被攻击后数据丢失的风险\n- 写文章部分目前仅支持插入网络图片，无法从本地上传图片\n- 手机端浏览文章页面会出现代码自动换行问题，不便于浏览过程\n\n#### 未来需增加的功能\n- 增加文章分享至QQ、微信、微博中功能\n- 用户可在线写文章功能\n- 用户收藏文章功能\n\n#### *以上就是我在博客网站搭建过程后的所有总结记录，可能会有遗缺部分，等以后想起来了再来修改吧。*\n\n> 本人秉持开源原则，待后期网站功能完善之后会同步源码至Github、码云中。需要搭建个人博客的朋友欢迎使用本博客，只要给我个stars就好啦，哈哈。如果搭建过程中有各种问题欢迎来骚。\n', 'SpringBoot,个人博客,原创', '原创', 'SpringBoot', '2018-08-02', '2018-08-02', 'http://localhost:8888//article/1533196734', '文字不够，图片来凑。前言为什么想要搭建这个博客？我还记得，在大二寒假的某天，同往常一样的在家解决这某个bug，不停地问度娘，很巧的碰到了一个同行在他的博客中完美的记录了我的bug的解决方案，随后我又看了看他写的其他博客文章，觉得都非常的不错，并且同时也被他博客网站的简约清新吸引，也就在那刻，心中埋下了准备自己搭建myblog的种子…于是在寒假的时候我就开始了Bootstrap了的学习，然后好像也并没有什么卵用，因为还是不会用~~~...', '2', '1532884460', '0');
+INSERT INTO `article` VALUES (21, 1605593386, 'lk', 'Carol_6a27', 'springboot核心原理', '# 1.基于你对springboot的理解描述一下什么是springboot\n\n它是一个服务于spring框架的框架，能够简化配置文件，快速构建web应用，\n内置tomcat，无需打包部署，直接运行。\n\n# 2.约定优于配置指的是什么？\n\nmaven 的目录结构\na) 默认有 resources 文件夹存放配置文件\nb) 默认打包方式为 jar\nspring-boot-starter-web 中默认包含 spring mvc 相关依赖以及内置的 tomcat 容器，使得构建一个 web 应用更加简单\n默认提供 application.properties/yml 文件\n默认通过 spring.profiles.active 属性来决定运行环境时读取的配置文件\nEnableAutoConfiguration 默认对于依赖的 starter 进行自动\n\n# 3.@SpringBootApplication由哪几个注解组成，这几个注解分别表示什么作用\n\nSpringBootApplication 本质上是由 3 个注解组成，分别是\n\n@Configuration\n@EnableAutoConfiguration\n@ComponentScan\n@Configuration：\n在启动类里面标注了@Configuration，意味着它其实也是一个 IoC\n容器的配置类\n\n@EnableAutoConfiguration：\nspringboot 应用把所有符合条件的@Configuration 配置\n都加载到当前 SpringBoot 创建并使用的 IoC 容器中。\n\n@ComponentScan：\nComponentScan 默认会扫描当前 package 下的的所有加\n了@Component 、@Repository、@Service、@Controller的类到 IoC 容器中；\n\n# 4.springboot自动装配的实现原理\n\n\nimage.png\n\n如果是之前的spring中使用redis需要在xml定义bean,现在只需要依赖一个spring-boot-starter-data-redis\n的jar包,jar中定义了RedisConfiguration,当启动的时候spring会自动装载RedisConfiguration,那spring是如何知道配置类在哪里的呢?RedisConfiguration类的路径放在了classpath*META-INF/spring.factories的文件中,spring会加载这个文件中配置的configuration\n\n（1）SpringApplication.run(AppConfig.class,args);执行流程中有refreshContext(context);这句话.\n（2）refreshContext(context);内部会解析我们的配置类上的标签.实现自动装配功能的注解@EnableAutoConfiguration\n（3）会解析@EnableAutoConfiguration这个注解里面的@Import引入的配置类.AutoConfigurationImportSelector\n（4）AutoConfigurationImportSelector这个类中有这个方法.SpringFactoriesLoader.loadFactoryNames(getSpringFactoriesLoaderFactoryClass(), getBeanClassLoader());\n（5）SpringFactoriesLoader.loadFactoryNames的作用就是读取jar包中的/项目中的META-INF/spring.factories文件.\n（6）spring.factories配置了要自动装配的Configuration类\n\n# 5.spring中的spi机制的原理是什么？\n\nSPI的全名为Service Provider Interface，为某个接口寻找服务实现的机制。\n当服务的提供者，提供了服务接口的一种实现之后，在jar包的META-INF/services/目录里同时创建一个以服务接口命名的文件。该文件里就是实现该服务接口的具体实现类。而当外部程序装配这个模块的时候，就能通过该jar包META-INF/services/里的配置文件找到具体的实现类名，并装载实例化，完成模块的注入。通过这个约定，就不需要把服务放在代码中了，通过模块被装配的时候就可以发现服务类了。\n\n在springboot的自动装配过程中，最终会加载META-INF/spring.factories文件，而加载的过程是由SpringFactoriesLoader加载的。从CLASSPATH下的每个Jar包中搜寻所有META-INF/spring.factories配置文件，然后将解析properties文件，找到指定名称的配置后返回。需要注意的是，其实这里不仅仅是会去ClassPath路径下查找，会扫描所有路径下的Jar包，只不过这个文件只会在Classpath下的jar包中。\n\n通过spi技术可以自定义starter,在自定义的配置文件META-INF/spring.factories中加入实现类,依赖这个starter的项目就会扫描jar包下的配置,找到实现类进行装载实例化\n\n\n作者：Carol_6a27\n链接：https://www.jianshu.com/p/f6ec46bd34a2\n来源：简书\n著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。', 'SpringBoot,转载', '转载', 'SpringBoot', '2020-11-17', '2020-11-17', 'https://www.jianshu.com/p/f6ec46bd34a2', '1.基于你对springboot的理解描述一下什么是springboot它是一个服务于spring框架的框架，能够简化配置文件，快速构建web应用，内置tomcat，无需打包部署，直接运行。2.约定优于配置指的是什么？maven的目录结构a)默认有resources文件夹存放配置文件b)默认打包方式为jarspring-boot-starter-web中默认包含springmvc相关依赖以及...', 2, 0, 1605621462);
+INSERT INTO `article` VALUES (22, 1605621462, '林奎', '林奎', 'spring Ioc（DI）的理解', '# 自己关于spring Ioc的理解：\n\n类和其依赖类的关系可以描述为公司与雇员的关系，spring提供的Ioc容器相当于人力资源公司（中介）。当一个公司需要新的员工或者其他什么资源时，传统的做法是公司自己进行招聘，有了中介之后，公司联系中介公司说我要什么样的员工（类），员工需要有什么样的技能（类的依赖类或者其他资源）。如果中介公司有这样的员工，交给公司。公司主动找人的过程就变成接受中介找到的员工，公司的主动权变为了被动接受。这就是控制反转。下面是大牛写的关于Ioc的介绍，引自：http://jinnianshilongnian.iteye.com/blog/1413846\n## 1. Ioc是什么？\nIoc—Inversion of Control，即“控制反转”，不是什么技术，而是一种设计思想。在Java开发中，Ioc意味着将你设计好的对象交给容器控制，而不是传统的在你的对象内部直接控制。如何理解好Ioc呢？理解好Ioc的关键是要明确“谁控制谁，控制什么，为何是反转（有反转就应该有正转了），哪些方面反转了”，那我们来深入分析一下：\n谁控制谁，控制什么： 传统Java SE程序设计，我们直接在对象内部通过new进行创建对象，是程序主动去创建依赖对象；而IoC是有专门一个容器来创建这些对象，即由Ioc容器来控制对象的创建；谁控制谁？当然是IoC 容器控制了对象；控制什么？那就是主要控制了外部资源获取（不只是对象包括比如文件等）。\n\n为何是反转，哪些方面反转了：有反转就有正转，传统应用程序是由我们自己在对象中主动控制去直接获取依赖对象，也就是正转；而反转则是由容器来帮忙创建及注入依赖对象；为何是反转？因为由容器帮我们查找及注入依赖对象，对象只是被动的接受依赖对象，所以是反转；哪些方面反转了？依赖对象的获取被反转了。\n## 2. Ioc能做什么\nIoC不是一种技术，只是一种思想，一个重要的面向对象编程的法则，它能指导我们如何设计出松耦合、更优良的程序。传统应用程序都是由我们在类内部主动创建依赖对象，从而导致类与类之间高耦合，难于测试；有了IoC容器后，把创建和查找依赖对象的控制权交给了容器，由容器进行注入组合对象，所以对象与对象之间是松散耦合，这样也方便测试，利于功能复用，更重要的是使得程序的整个体系结构变得非常灵活。\n\n其实IoC对编程带来的最大改变不是从代码上，而是从思想上，发生了“主从换位”的变化。应用程序原本是老大，要获取什么资源都是主动出击，但是在IoC/DI思想中，应用程序就变成被动的了，被动的等待IoC容器来创建并注入它所需要的资源了。\n\nIoC很好的体现了面向对象设计法则之一—— 好莱坞法则：“别找我们，我们找你”；即由IoC容器帮对象找相应的依赖对象并注入，而不是由对象主动去找。\n\n## 3. IoC和DI\nDI—Dependency Injection，即“依赖注入”：是组件之间依赖关系由容器在运行期决定，形象的说，即由容器动态的将某个依赖关系注入到组件之中。依赖注入的目的并非为软件系统带来更多功能，而是为了提升组件重用的频率，并为系统搭建一个灵活、可扩展的平台。通过依赖注入机制，我们只需要通过简单的配置，而无需任何代码就可指定目标需要的资源，完成自身的业务逻辑，而不需要关心具体的资源来自何处，由谁实现。\n\n理解DI的关键是：“谁依赖谁，为什么需要依赖，谁注入谁，注入了什么”，那我们来深入分析一下：\n\n谁依赖于谁：当然是应用程序依赖于IoC容器；\n\n为什么需要依赖：应用程序需要IoC容器来提供对象需要的外部资源；\n\n谁注入谁：很明显是IoC容器注入应用程序某个对象，应用程序依赖的对象；\n\n注入了什么：就是注入某个对象所需要的外部资源（包括对象、资源、常量数据）。\n\nIoC和DI由什么关系呢？其实它们是同一个概念的不同角度描述，由于控制反转概念比较含糊（可能只是理解为容器控制对象这一个层面，很难让人想到谁来维护对象关系），所以2004年大师级人物Martin Fowler又给出了一个新的名字：“依赖注入”，相对IoC 而言，“依赖注入”明确描述了“被注入对象依赖IoC容器配置依赖对象”。\n\n注：如果想要更加深入的了解IoC和DI，请参考大师级人物Martin Fowler的一篇经典文章《Inversion of Control Containers and the Dependency Injection pattern》，原文地址：http://www.martinfowler.com/articles/injection.html。\n\n', 'spring,框架,java,原创', '原创', 'SpringBoot', '2020-11-17', '2020-11-17', 'http://localhost:8888/article/1605621462', '自己关于springIoc的理解：类和其依赖类的关系可以描述为公司与雇员的关系，spring提供的Ioc容器相当于人力资源公司（中介）。当一个公司需要新的员工或者其他什么资源时，传统的做法是公司自己进行招聘，有了中介之后，公司联系中介公司说我要什么样的员工（类），员工需要有什么样的技能（类的依赖类或者其他资源）。如果中介公司有这样的员工，交给公司。公司主动找人的过程就变成接受中介找到的员工，...', 5, 1605593386, 0);
 
 -- ----------------------------
 -- Table structure for article_likes_record
 -- ----------------------------
 DROP TABLE IF EXISTS `article_likes_record`;
-CREATE TABLE `article_likes_record` (
+CREATE TABLE `article_likes_record`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `articleId` bigint(20) NOT NULL,
   `likerId` int(11) NOT NULL,
-  `likeDate` varchar(255) NOT NULL,
+  `likeDate` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `isRead` tinyint(1) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8;
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 31 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of article_likes_record
 -- ----------------------------
-INSERT INTO `article_likes_record` VALUES ('1', '1532884460', '1', '2018-07-31 20:00','1');
-INSERT INTO `article_likes_record` VALUES ('2', '1533196734', '1', '2018-08-02 21:24','1');
+INSERT INTO `article_likes_record` VALUES (29, 1605621462, 1, '2020-11-19 23:35', 0);
+INSERT INTO `article_likes_record` VALUES (30, 1605593386, 1, '2020-11-19 23:53', 0);
 
 -- ----------------------------
 -- Table structure for categories
 -- ----------------------------
 DROP TABLE IF EXISTS `categories`;
-CREATE TABLE `categories` (
+CREATE TABLE `categories`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `categoryName` varchar(255) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+  `categoryName` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 13 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of categories
 -- ----------------------------
-INSERT INTO `categories` VALUES ('1', '我的故事');
-INSERT INTO `categories` VALUES ('2', 'SpringBoot');
+INSERT INTO `categories` VALUES (1, '我的故事');
+INSERT INTO `categories` VALUES (2, 'SpringBoot');
 
 -- ----------------------------
 -- Table structure for comment_likes_record
 -- ----------------------------
 DROP TABLE IF EXISTS `comment_likes_record`;
-CREATE TABLE `comment_likes_record` (
+CREATE TABLE `comment_likes_record`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `articleId` bigint(20) NOT NULL,
   `pId` int(11) NOT NULL,
   `likerId` int(11) NOT NULL,
-  `likeDate` varchar(255) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+  `likeDate` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 9 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of comment_likes_record
 -- ----------------------------
+INSERT INTO `comment_likes_record` VALUES (8, 1605621462, 16, 1, '2020-11-17 23:00');
 
 -- ----------------------------
 -- Table structure for comment_record
 -- ----------------------------
 DROP TABLE IF EXISTS `comment_record`;
-CREATE TABLE `comment_record` (
+CREATE TABLE `comment_record`  (
   `id` bigint(11) NOT NULL AUTO_INCREMENT,
   `pId` bigint(20) NOT NULL,
   `articleId` bigint(20) NOT NULL,
   `answererId` int(11) NOT NULL,
   `respondentId` int(11) NOT NULL,
-  `commentDate` varchar(255) NOT NULL,
+  `commentDate` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `likes` int(255) NOT NULL,
-  `commentContent` text NOT NULL,
+  `commentContent` text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `isRead` tinyint(1) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 17 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of comment_record
 -- ----------------------------
-INSERT INTO `comment_record` VALUES ('2', '0', '1533196734', '1', '1', '2018-08-03 00:13', '1', '测试评论功能，嘻嘻嘻','1');
-INSERT INTO `comment_record` VALUES ('3', '2', '1533196734', '1', '1', '2018-08-03 00:15', '0', '一切正常，哈哈哈','1');
+INSERT INTO `comment_record` VALUES (16, 0, 1605621462, 16, 1, '2020-11-20 11:12', 0, '11', 1);
 
 -- ----------------------------
 -- Table structure for feedback
 -- ----------------------------
 DROP TABLE IF EXISTS `feedback`;
-CREATE TABLE `feedback` (
+CREATE TABLE `feedback`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `feedbackContent` text NOT NULL,
-  `contactInfo` varchar(255) DEFAULT NULL,
+  `feedbackContent` text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `contactInfo` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `personId` int(11) NOT NULL,
-  `feedbackDate` varchar(255) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `feedbackDate` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of feedback
 -- ----------------------------
+INSERT INTO `feedback` VALUES (1, '染发鬼地方', '', 1, '2020-11-17 21:49:07');
+INSERT INTO `feedback` VALUES (2, '11111111111111111111', '', 16, '2020-11-20 11:11:23');
+
+-- ----------------------------
+-- Table structure for friendlink
+-- ----------------------------
+DROP TABLE IF EXISTS `friendlink`;
+CREATE TABLE `friendlink`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `blogger` varchar(40) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `url` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 13 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of friendlink
+-- ----------------------------
+INSERT INTO `friendlink` VALUES (2, 'Li Pan\s 博客', 'http://www.lipan.xyz');
+INSERT INTO `friendlink` VALUES (3, '陈晓雷个人博客', 'http://www.csxll.top');
+INSERT INTO `friendlink` VALUES (4, 'SAn Blog', 'https://sanii.cn');
+INSERT INTO `friendlink` VALUES (5, '会打篮球的程序猿', 'http://www.liuzhaopo.top');
+INSERT INTO `friendlink` VALUES (6, 'Mr_曾中杰', 'https://www.zengzhongjie.com');
+INSERT INTO `friendlink` VALUES (7, '去当CTO', 'https://www.qdcto.com');
+INSERT INTO `friendlink` VALUES (8, 'Face2Object', 'https://www.bossding.com.cn');
+INSERT INTO `friendlink` VALUES (9, '小海博客', 'https://www.celess.cn');
+INSERT INTO `friendlink` VALUES (10, '枫之羽', 'http://fzhiy.com');
+INSERT INTO `friendlink` VALUES (12, '百度', 'http://www.baidu.com');
 
 -- ----------------------------
 -- Table structure for leave_message_likes_record
 -- ----------------------------
 DROP TABLE IF EXISTS `leave_message_likes_record`;
-CREATE TABLE `leave_message_likes_record` (
+CREATE TABLE `leave_message_likes_record`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `pageName` varchar(255) NOT NULL,
+  `pageName` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `pId` int(11) NOT NULL,
   `likerId` int(11) NOT NULL,
-  `likeDate` varchar(255) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+  `likeDate` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 14 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of leave_message_likes_record
 -- ----------------------------
+INSERT INTO `leave_message_likes_record` VALUES (11, 'tags', 20, 1, '2020-11-19 23:52');
+INSERT INTO `leave_message_likes_record` VALUES (12, 'tags', 19, 1, '2020-11-19 23:52');
+INSERT INTO `leave_message_likes_record` VALUES (13, 'tags', 16, 1, '2020-11-19 23:52');
 
 -- ----------------------------
 -- Table structure for leave_message_record
 -- ----------------------------
 DROP TABLE IF EXISTS `leave_message_record`;
-CREATE TABLE `leave_message_record` (
+CREATE TABLE `leave_message_record`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `pageName` varchar(255) NOT NULL,
+  `pageName` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `pId` int(255) NOT NULL,
   `answererId` int(11) NOT NULL,
   `respondentId` int(11) NOT NULL,
-  `leaveMessageDate` varchar(255) NOT NULL,
+  `leaveMessageDate` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `likes` int(11) NOT NULL,
-  `leaveMessageContent` text NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
+  `leaveMessageContent` text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 26 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of leave_message_record
 -- ----------------------------
-INSERT INTO `leave_message_record` VALUES ('14', 'categories', '0', '1', '1', '2018-09-19 13:53', '0', '分类留言测试');
-INSERT INTO `leave_message_record` VALUES ('15', 'archives', '0', '1', '1', '2018-09-19 13:53', '0', '归档留言');
-INSERT INTO `leave_message_record` VALUES ('16', 'tags', '0', '1', '1', '2018-09-19 13:53', '0', '标签留言');
-INSERT INTO `leave_message_record` VALUES ('17', 'update', '0', '1', '1', '2018-09-19 13:53', '0', '更新留言');
-INSERT INTO `leave_message_record` VALUES ('18', 'friendlylink', '0', '1', '1', '2018-09-19 13:54', '0', '需要添加友链的朋友可在www.zhyocean.cn/friendlylink下方留言（网站名称+网址），随后验证后会在本人博客中添加友链链接');
+INSERT INTO `leave_message_record` VALUES (14, 'categories', 0, 1, 1, '2020-11-17 13:53', 0, '分类留言测试');
+INSERT INTO `leave_message_record` VALUES (15, 'archives', 0, 1, 1, '2020-11-17 13:53', 0, '归档留言');
+INSERT INTO `leave_message_record` VALUES (16, 'tags', 0, 1, 1, '2020-11-17 13:53', 1, '标签留言');
+INSERT INTO `leave_message_record` VALUES (17, 'update', 0, 1, 1, '2020-11-17 13:53', 0, '更新留言');
+INSERT INTO `leave_message_record` VALUES (18, 'friendlylink', 0, 1, 1, '2020-11-17 13:54', 0, '博客测试');
+INSERT INTO `leave_message_record` VALUES (19, 'tags', 0, 1, 1, '2020-11-17 22:13', 1, '522');
+INSERT INTO `leave_message_record` VALUES (20, 'tags', 0, 1, 1, '2020-11-17 22:13', 1, 'dfsf');
+INSERT INTO `leave_message_record` VALUES (21, 'archives', 0, 1, 1, '2020-11-17 22:18', 0, 'rf');
+INSERT INTO `leave_message_record` VALUES (22, 'mystory', 0, 1, 1, '2020-11-17 23:01', 0, '试试');
+INSERT INTO `leave_message_record` VALUES (23, 'aboutme', 0, 16, 1, '2020-11-20 11:07', 0, 'uuu');
+INSERT INTO `leave_message_record` VALUES (24, 'aboutme', 0, 1, 1, '2020-11-20 23:08', 0, '是');
+INSERT INTO `leave_message_record` VALUES (25, 'aboutme', 24, 1, 1, '2020-11-20 23:12', 0, 'kliuj');
 
 -- ----------------------------
 -- Table structure for privateword
 -- ----------------------------
 DROP TABLE IF EXISTS `privateword`;
-CREATE TABLE `privateword` (
+CREATE TABLE `privateword`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `privateWord` varchar(255) NOT NULL,
-  `publisherId` varchar(255) NOT NULL,
-  `replierId` varchar(255) DEFAULT NULL,
-  `replyContent` varchar(255) DEFAULT NULL,
-  `publisherDate` varchar(255) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+  `privateWord` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `publisherId` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `replierId` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `replyContent` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `publisherDate` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 9 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of privateword
 -- ----------------------------
-INSERT INTO `privateword` VALUES ('8', '悄悄话测试', '1', '0', null, '2018-09-19 14:13:32');
+INSERT INTO `privateword` VALUES (8, '悄悄话测试', '1', '1', '我', '2020-11-17 14:13:32');
 
 -- ----------------------------
 -- Table structure for role
 -- ----------------------------
 DROP TABLE IF EXISTS `role`;
-CREATE TABLE `role` (
+CREATE TABLE `role`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+  `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of role
 -- ----------------------------
-INSERT INTO `role` VALUES ('1', 'ROLE_USER');
-INSERT INTO `role` VALUES ('2', 'ROLE_ADMIN');
-INSERT INTO `role` VALUES ('3', 'ROLE_SUPERADMIN');
+INSERT INTO `role` VALUES (1, 'ROLE_USER');
+INSERT INTO `role` VALUES (2, 'ROLE_ADMIN');
+INSERT INTO `role` VALUES (3, 'ROLE_SUPERADMIN');
 
 -- ----------------------------
 -- Table structure for tags
 -- ----------------------------
 DROP TABLE IF EXISTS `tags`;
-CREATE TABLE `tags` (
+CREATE TABLE `tags`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `tagName` varchar(255) NOT NULL,
+  `tagName` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `tagSize` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 24 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of tags
 -- ----------------------------
-INSERT INTO `tags` VALUES ('1', '随笔感悟', '15');
-INSERT INTO `tags` VALUES ('4', 'SpringBoot', '17');
-INSERT INTO `tags` VALUES ('5', '个人博客', '18');
-INSERT INTO `tags` VALUES ('18', '原创', '20');
+INSERT INTO `tags` VALUES (1, '随笔感悟', 15);
+INSERT INTO `tags` VALUES (4, 'SpringBoot', 17);
+INSERT INTO `tags` VALUES (5, '个人博客', 18);
+INSERT INTO `tags` VALUES (18, '原创', 20);
+INSERT INTO `tags` VALUES (20, '转载', 20);
+INSERT INTO `tags` VALUES (21, 'spring', 17);
+INSERT INTO `tags` VALUES (22, '框架', 17);
+INSERT INTO `tags` VALUES (23, 'java', 17);
 
 -- ----------------------------
 -- Table structure for user
 -- ----------------------------
 DROP TABLE IF EXISTS `user`;
-CREATE TABLE `user` (
+CREATE TABLE `user`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `phone` varchar(255) NOT NULL,
-  `username` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL,
-  `gender` char(255) NOT NULL,
-  `trueName` varchar(255) DEFAULT NULL,
-  `birthday` varchar(255) DEFAULT NULL,
-  `email` varchar(255) DEFAULT NULL,
-  `personalBrief` varchar(255) DEFAULT NULL,
-  `avatarImgUrl` text NOT NULL,
-  `recentlyLanded` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
+  `phone` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `username` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `password` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `gender` char(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `trueName` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `birthday` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `email` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `personalBrief` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `avatarImgUrl` text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `recentlyLanded` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 17 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-INSERT INTO `user` VALUES ('1', '19940790216', '张海洋', 'a3caed36f0fe5a01e5f144db8927235e', 'male', '张海洋', '1997-07-05', '1125694337@qq.com', '', 'https://zhy-myblog.oss-cn-shenzhen.aliyuncs.com/public/user/avatar/张海洋/1536759681.jpeg', '2018-09-19 13:52:50');
+INSERT INTO `user` VALUES (1, '15313140874', '林奎', '572153b0ba84633c15dfb627180a869a', 'male', '林奎', '1995-05-19', '275222070@qq.com', '', '../img/wx.png', '2020-11-22 16:43:18');
+INSERT INTO `user` VALUES (16, '15313140873', 'lk', '572153b0ba84633c15dfb627180a869a', 'male', NULL, NULL, NULL, NULL, '../img/noLogin_male.jpg', '2020-11-20 10:14:24');
 
 -- ----------------------------
 -- Table structure for user_role
 -- ----------------------------
 DROP TABLE IF EXISTS `user_role`;
-CREATE TABLE `user_role` (
+CREATE TABLE `user_role`  (
   `User_id` int(11) NOT NULL,
   `Role_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of user_role
 -- ----------------------------
-INSERT INTO `user_role` VALUES ('1', '1');
-INSERT INTO `user_role` VALUES ('1', '3');
+INSERT INTO `user_role` VALUES (1, 1);
+INSERT INTO `user_role` VALUES (1, 3);
+INSERT INTO `user_role` VALUES (16, 3);
+INSERT INTO `user_role` VALUES (16, 1);
 
 -- ----------------------------
 -- Table structure for visitor
 -- ----------------------------
 DROP TABLE IF EXISTS `visitor`;
-CREATE TABLE `visitor` (
+CREATE TABLE `visitor`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `visitorNum` bigint(20) NOT NULL,
-  `pageName` text NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8;
+  `pageName` text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 25 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of visitor
 -- ----------------------------
-INSERT INTO `visitor` VALUES ('1', '3228', 'totalVisitor');
-INSERT INTO `visitor` VALUES ('2', '1032', 'visitorVolume');
-INSERT INTO `visitor` VALUES ('3', '42', 'article/1532884460');
-INSERT INTO `visitor` VALUES ('5', '57', 'article/1533196734');
+INSERT INTO `visitor` VALUES (1, 585, 'totalVisitor');
+INSERT INTO `visitor` VALUES (2, 36, 'visitorVolume');
+INSERT INTO `visitor` VALUES (3, 0, 'article/1532884460');
+INSERT INTO `visitor` VALUES (5, 1, 'article/1533196734');
+INSERT INTO `visitor` VALUES (22, 1, 'article/1605589930');
+INSERT INTO `visitor` VALUES (23, 6, 'article/1605593386');
+INSERT INTO `visitor` VALUES (24, 11, 'article/1605621462');
+
+SET FOREIGN_KEY_CHECKS = 1;

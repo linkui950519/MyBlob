@@ -31,7 +31,7 @@
             '<span class="node" style="-webkit-box-sizing: content-box;-moz-box-sizing: content-box;box-sizing: content-box;">' +
             '<i class="am-icon-coffee"></i>' +
             '</span>' +
-            '<h1 class="title am-animation-slide-top"># 择一城终老，遇一人白首</h1>' +
+            '<h1 class="title am-animation-slide-top"># 我想写一出最悲的悲剧，里面充满了无耻的笑声。</h1>' +
             '</div>'));
         $.each(data['result'],function (index,obj) {
 
