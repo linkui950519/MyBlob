@@ -7,7 +7,7 @@ $('.userList .clickLi').click(function () {
 
 $('.basicSetting').click(function () {
     $('#phone').val("");
-    $('#authCode').val("");
+//    $('#authCode').val("");
     $('#password').val("");
     $('#surePassword').val("");
 });
@@ -162,7 +162,7 @@ savePersonalDateBtn.click(function () {
 });
 
 var phone = $('#phone');
-var authCode = $('#authCode');
+//var authCode = $('#authCode');
 var password = $('#password');
 var surePassword = $('#surePassword');
 
@@ -241,9 +241,7 @@ $('#changePasswordBtn').click(function () {
         dangerNotice("手机号不能为空");
     } else if (phone.hasClass("wrong")){
         dangerNotice("手机号不正确");
-    } else if (authCode.val().length === 0){
-        dangerNotice("验证码不能为空");
-    } else if (password.val().length === 0){
+    }   else if (password.val().length === 0){
         dangerNotice("新密码不能为空");
     } else if (surePassword.val().length === 0){
         dangerNotice("确认密码不能为空");
@@ -257,8 +255,7 @@ $('#changePasswordBtn').click(function () {
                 dataType:'json',
                 data:{
                     phone:phone.val(),
-                    authCode:authCode.val(),
-                    newPassword:password.val()
+                     newPassword:password.val()
                 },
                 success:function (data) {
                     if(data == "0"){
@@ -516,9 +513,9 @@ $('#userLeaveMessageClick').click(function () {
 
 //发布悄悄话
 $('.userSayBtn').click(function () {
-    var userSay = $('#userSay');
+    var userSay = $('#userSay').val();
     userSay = $.trim(userSay);
-    if(userSay.val().length == 0){
+    if(userSay == ""){
         dangerNotice("你还没说两句呢");
     } else {
         $.ajax({
@@ -526,18 +523,18 @@ $('.userSayBtn').click(function () {
             url:'/sendPrivateWord',
             dataType:'json',
             data:{
-                privateWord:userSay.val()
+                privateWord:userSay
             },
             success:function (data) {
-                if(data['status'] == 403){
+                if(data['status'] == 101){
                     $.get("/toLogin",function(data,status,xhr){
                         window.location.replace("/login");
                     });
+                } else if(data['status'] == 103){
+                    dangerNotice(data['message'] + " 发表悄悄话失败");
                 } else {
-                    if(data['status'] == 200){
-                        successNotice("发布悄悄话成功");
-                    }
-                    userSay.val("");
+                    successNotice("发布悄悄话成功");
+                    $('#userSay').val("");
                     getPrivateWordByPublisher(1);
                 }
             },
