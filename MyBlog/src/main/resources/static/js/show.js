@@ -21,9 +21,7 @@
             '<div class="article-info article-info-categories">' +
             '<i class="am-icon-folder"> <a class="articleCategoryColor" href="/categories?category=' + data.articleCategories + '">' + data.articleCategories + '</a></i>' +
             '</div>' +
-            '</div></article-top><div class="article-i-say">' +
-            '多年以后，愿你的城市，有清风，有烈酒，也有人是你的归途。<span class="article-i-say-me">--- 张海洋</span>' +
-            '</div>');
+            '</div></article-top>');
         $('.zhy-article-top').append(articleTop);
         $("#mdText").text(data.articleContent);
         var wordsView;
