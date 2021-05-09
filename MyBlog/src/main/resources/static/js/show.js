@@ -103,7 +103,7 @@
             $('.likeHeart').find('i').removeClass("am-icon-heart-o");
             $('.likeHeart').find('i').addClass("am-icon-heart");
         }
-        $('.other').append($('<div class="social-share" data-initialized="true" data-url="http://localhost:8888/article/' + data.articleId  + '"  data-title="' + data.articleTitle + '">' +
+        $('.other').append($('<div class="social-share" data-initialized="true" data-url="http://182.92.185.169:8888/article/' + data.articleId  + '"  data-title="' + data.articleTitle + '">' +
             '</div>'))
 
         //选中所有需放大的图片加上data-src属性

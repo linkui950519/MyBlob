@@ -15,6 +15,6 @@ public interface SiteOwner {
     /**
      * 填写网站域名或ip地址(最好是域名，如果你还没有域名填ip也行吧)
      */
-    String SITE_OWNER_URL = "http://localhost:8888";
+    String SITE_OWNER_URL = "http://182.92.185.169:8888";
 
 }
