@@ -35,10 +35,53 @@ public class ArchiveServiceImpl implements ArchiveService {
             archiveJson.put("archiveName",archiveName);
             archiveName = timeUtil.timeYearToWhippletree(archiveName);
             archiveJson.put("archiveArticleNum",articleService.countArticleArchiveByArchive(archiveName));
-            archivesJsonArray.add(archiveJson);
+            archivesJsonArray.add(archiveJson);;
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         JSONObject returnJson = new JSONObject();
-        returnJson.put("status",200);
+          returnJson.put("status",200);
         returnJson.put("result", archivesJsonArray);
         return returnJson;
     }
